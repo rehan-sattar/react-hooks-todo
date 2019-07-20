@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 import useTodoState from "../hooks/useTodoState";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+  const initialTodos = [];
   const [
     todos,
     { addTodo, removeTodo, toggleTodos, updateTodo }
   ] = useTodoState(initialTodos);
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <Paper style={{ padding: 0, margin: 0, height: "100vh" }} elevation={0}>
