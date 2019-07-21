@@ -1,23 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Paper, List, Divider, Grid } from "@material-ui/core";
+import { TodoContext } from "../contexts/todos.context";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import Todo from "./Todo";
 
-function TodoList({ todos, removeTodo, toggleTodos, updateTodo }) {
+function TodoList() {
+  const { todos } = useContext(TodoContext);
   return (
     <Paper>
       <List>
         {todos.length > 0 ? (
           todos.map((todo, index) => (
-            <>
-              <Todo
-                {...todo}
-                removeTodo={removeTodo}
-                toggleTodos={toggleTodos}
-                updateTodo={updateTodo}
-              />
+            <React.Fragment key={index}>
+              <Todo {...todo} />
               {index < todos.length - 1 && <Divider />}
-            </>
+            </React.Fragment>
           ))
         ) : (
           <Grid container justify="center">
