@@ -5,11 +5,11 @@ import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import Todo from "./Todo";
 
 function TodoList() {
-  const { todos } = useContext(TodoContext);
+  const todos = useContext(TodoContext);
   return (
     <Paper>
       <List>
-        {todos.length > 0 ? (
+        {todos && todos.length > 0 ? (
           todos.map((todo, index) => (
             <React.Fragment key={index}>
               <Todo {...todo} />
